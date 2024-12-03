@@ -47,12 +47,52 @@ app.get("/grafico", async (req, res) => {
                     title: {
                         display: true,
                         text: 'X'
+                    },
+                    min: 0, // X1 - 2
+                    max: 350, // X5 + 2
+                    ticks: {
+                        stepSize: 1, // Intervalo de 1
+                        callback: function(value) {
+                            return Number(value.toString());
+                        }
+                    },
+                    grid: {
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: true,
+                        tickLength: 10,
+                        color: 'rgba(0, 0, 0, 0.1)',
+                        borderDash: [5, 5],
+                        borderDashOffset: 0.0,
+                        lineWidth: 1,
+                        offset: false
                     }
                 },
                 y: {
+                    type: 'logarithmic',
                     title: {
                         display: true,
-                        text: 'Y'
+                        text: 'Y (Logarithmic)'
+                    },
+                    min: 30, // EscalaY_IN
+                    max: 60, // EscalaY_FIN
+                    ticks: {
+                        callback: function(value) {
+                            return Number(value.toString());
+                        },
+                        stepSize: 1 // Intervalo de 1
+                    },
+                    base: 10,
+                    grid: {
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: true,
+                        tickLength: 10,
+                        color: 'rgba(0, 0, 0, 0.1)',
+                        borderDash: [5, 5],
+                        borderDashOffset: 0.0,
+                        lineWidth: 1,
+                        offset: false
                     }
                 }
             }
